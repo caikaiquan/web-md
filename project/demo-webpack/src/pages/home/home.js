@@ -1,4 +1,5 @@
 import './home.less';
+import '../../assets/css/base.css'
 import $ from 'jquery';
 import './a.js'
 import './b.js'

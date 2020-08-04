@@ -1,3 +1,4 @@
+import '../../assets/css/base.css'
 import './index.less'
 import $ from 'jquery'
 console.log('Hello World',$)

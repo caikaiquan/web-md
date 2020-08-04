@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack'); // webpack自带的热更新插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { entry, htmlPlugins } = require('./common.js')
 module.exports = {
   entry,
@@ -13,12 +14,32 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        use: {
+          loader: 'html-loader',
+        }
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        use: [{
+          // 处理css文件中引入的图片
+          loader: "file-loader",
+          options: {
+            limit: 50,
+            outputPath: "images/",  // 打包后文件相对dist文件夹的位置
+            publicPath: '../images',  // 打包后css中图片的引用路径
+            name: '[name].[hash:5].[ext]',  // 打包后的名字
+            // esModule: false,
+          }
+        }]
+      },
+      {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
       }
     ]
   },
@@ -26,7 +47,13 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     ...htmlPlugins,
-    new webpack.HotModuleReplacementPlugin() // 热模块更新插件
+    new webpack.HotModuleReplacementPlugin(), // 热模块更新插
+    new MiniCssExtractPlugin(
+      {
+        filename: 'css/[name].[hash:5].css',
+        chunkFilename: 'css/[id].css',
+      }
+    ),
   ],
   // 优化
   optimization: {
