@@ -14,12 +14,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/i,
-        use: {
-          loader: 'html-loader',
-        }
-      },
-      {
         test: /\.(jpg|png|gif)$/,
         use: [{
           // 处理css文件中引入的图片
