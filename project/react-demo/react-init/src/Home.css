@@ -1,0 +1,114 @@
+@import '~antd/dist/antd.css';
+/* #1890ff */
+.home{
+    margin: 0 auto;
+    padding: 20px;
+    /* background:pink; */
+    background: rgba(250,250,250);
+    height: 100vh;
+    overflow: auto;
+}
+
+.category,
+.condition
+{
+    display: flex;
+    padding: 10px;
+}
+
+.category-title,
+.condition-title
+{
+    width: 50px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.category-container,
+.condition-container
+{
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-container p,
+.condition-container p
+{
+    padding: 0 8px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 0;
+    border-radius: 3px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.category-container p.active,
+.condition-container p.active{
+    background:rgba(24,144,255,0.1);
+    color: rgba(24,144,255,1);
+}
+
+.goods{
+}
+
+.goods-item{
+    width: 100%;
+    height: 5;
+    background-color: #fff;
+    display: flex;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+.item-middle{
+    flex:2;
+    padding: 0 20px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.item-middle p,
+.item-right p
+ {
+    margin-bottom: 0;
+    height: 32px;
+    line-height: 32px;
+}
+
+.item-right{
+    width: 200px;
+    padding: 0 20px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.item-right p{
+    /* text-align: right; */
+}
+.item-left img{
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+.ratings-num{
+    color: #1890ff;
+}
+
+.loading-status{
+    padding: 10px 0;
+    text-align: center;
+    color: #1890ff;
+}
+
+
+
+
+
