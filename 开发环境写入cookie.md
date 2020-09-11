@@ -9,4 +9,8 @@ hosts 文件
 127.0.0.1 www.my.beta.ule.com （新增）
 
 访问页面 http://www.my.beta.ule.com:8081/downloadcenter.html#/
+webpack.dev.conf.js 或者 vue.config.js
+devServer:{
+  disableHostCheck: true,
+}
 ```
