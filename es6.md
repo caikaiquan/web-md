@@ -1,6 +1,6 @@
 ## ES6相关
 
-### 模块导入导出
+### 1. 模块导入导出
 1. 打包项目（vue、react）
 
     导出：
@@ -58,3 +58,104 @@
     const name = require('./2.js')
     ```
 [^_^]: 这里是一段注释文本
+
+### 2. Promise链式调用
+```
+  const fun1 = () => {
+    console.log('这里开始执行fun1')
+    let fun = new Promise(resolve =>{
+      setTimeout(() => {
+        console.log('准备开始执行fun2')
+        resolve({fun1:true})
+      }, 1000);
+    })
+    return fun
+  }
+
+  const fun2 = (res) => {
+    console.log('这里开始执行fun2')
+    let fun = new Promise(resolve =>{
+      setTimeout(() => {
+        console.log('准备开始执行fun3')
+        resolve({...res,fun2:true})
+      }, 1000);
+    })
+    return fun
+  }
+
+  const fun3 = (res) => {
+    console.log('这里开始执行fun3')
+    let fun = new Promise(resolve =>{
+      setTimeout(() => {
+        console.log('准备开始执行fun4')
+        resolve({...res,fun3:true})
+      }, 1000);
+    })
+    return fun
+  }
+
+  const fun4 = (res) => {
+    console.log('这里开始执行fun4')
+    let fun = new Promise(resolve =>{
+      setTimeout(() => {
+        console.log('执行结束了')
+        resolve({...res,fun4:true})
+      }, 1000);
+    })
+    return fun
+  }
+
+
+  fun1()
+  .then(fun2)
+  .then(fun3)
+  .then(fun4)
+  .then(data =>{
+    console.log(data)
+  })
+  .catch(err =>{
+    console.log(err)
+  })
+```
+### 3. async await
+```
+  const fun1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({fun1:"这里执行了fun1函数"})
+    }, 1000);
+  })
+  
+  const fun2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // resolve({fun2:"这里执行了fun2函数"})
+      reject({fun2Error:"执行fun2报错了"})
+    }, 1000);
+  })
+  
+  const fun3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({fun3:"这里执行了fun3函数"})
+    }, 1000);
+  })
+  
+  const fun4 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({fun4:"这里执行了fun4函数"})
+    }, 1000);
+  })
+  
+  const asyncFun = async () => {
+    let resTotal = {};
+    let res1 = await fun1;
+    let res2 = await fun2;
+    let res3 = await fun3;
+    let res4 = await fun4;
+    resTotal = {...resTotal,...res1, ...res2, ...res3, ...res4}
+    console.log(resTotal)
+  }
+  
+  asyncFun()
+  .catch(err =>{
+    console.log(err)
+  })
+```
