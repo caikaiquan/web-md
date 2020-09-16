@@ -91,3 +91,30 @@ const handleNumShow = (text) => {
     return text
   }
 }
+
+// 数字转化成千分位显示优化方案
+// '1323121999.21'
+const handleNumShow = (num) => {
+  if (!num || num === '0') {
+    return num
+  }
+  num = String(num).split('').reverse();
+  let index = num.indexOf('.');
+  let numNew = '';
+  let numStep = 0;
+  for (let i = 0; i < num.length; i++) {
+    if (i <= index) {
+      numNew += num[i]
+    } else {
+      if (numStep === 3) {
+        numStep = 0;
+        numNew = numNew + "," + num[i]
+      } else {
+        numNew += num[i]
+      }
+      numStep++;
+    }
+  }
+  numNew = numNew.split('').reverse().join("")
+  return numNew
+}
