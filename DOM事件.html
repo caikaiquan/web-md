@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .child {
+      background: #ccc;
+    }
+
+    .child1 {
+      background: pink;
+    }
+
+    .child2 {
+      background: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="child">
+    child
+    <div class="child1">
+      child1
+      <div class="child2">child2</div>
+    </div>
+  </div>
+</body>
+<script>
+  window.onload = () => {
+    let Child = document.querySelector('.child')
+    let Child1 = document.querySelector('.child1')
+    let Child2 = document.querySelector('.child2')
+    // Child.onclick = () => {
+    //   console.log('child被点击了', 1111)
+    // }
+    // Child1.onclick = () => {
+    //   console.log('child被点击了', 2222)
+    // }
+    // Child2.onclick = (e) => {
+    //   console.log('child被点击了', 3333)
+    //   e.stopPropagation()
+    // }
+
+    Child.addEventListener( 'click' , () => {
+      console.log('child被点击了', 1111)
+    } , true)
+    Child1.addEventListener( 'click' , () => {
+      console.log('child1被点击了', 2222)
+    } , true)
+    Child2.addEventListener( 'click' , (e) => {
+      console.log('child2被点击了', 3333)
+      e.stopPropagation()
+    } , true)
+  }
+</script>
+
+</html>

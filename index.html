@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .sj {
+      width: 0;
+      height: 0;
+      border: 10px solid #000;
+      border-color: transparent red transparent transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='sj'></div>
+  <input type="text" id="textInput">
+  输入：<span id="textSpan"></span>
+</body>
+<script>
+  window.onload = () => {
+
+    let  InputDom = document.querySelector('#textInput')
+    let  SpanDom = document.querySelector('#textSpan')
+    
+
+
+    let valObj = {}
+    Object.defineProperty( valObj, 'value', {
+      set (newVal) {
+        InputDom.value = newVal;
+        SpanDom.innerHTML = newVal
+      }
+    })
+
+    textInput.addEventListener('keyup' , (e) => {
+      console.log(e.target, e.target.value)
+      valObj.value =  e.target.value;
+    })
+    // function Person(name, age, sql) {
+    //   this.name = name;
+    //   var age = age;
+    //   var sql = sql;
+    //   // 在类中如何定义公开方法（特权方法）；私有方法（内部方法）
+    //   // 如果我们希望操作私有的属性，则可用公开方法实现
+    //   this.show = function () {
+    //     alert(age + "-----" + sql)
+    //   }
+
+    //   // 私有方法
+    //   function show2() {
+    //     alert(age + ' ' + sql)
+    //   }
+    // }
+    // var p1 = new Person('xiaoming', 30, 1000)
+    // alert(p1.name, 'p1.name') // xiaoming    共有属性
+    // alert(p1.age, 'p1.age')   // undefined   私有属性
+    // alert(p1.sql, 'p1.sql')   // undefined   私有属性
+
+    // p1.show2() // index.html:43 Uncaught TypeError: p1.show2 is not a function
+    // function Person() {
+    //   this.test = function () {
+    //     alert("Person");
+    //   }
+    // }
+
+    // function Dog() {
+    //   this.test = function () {
+    //     alert("Dog");
+    //   }
+    // }
+
+    // var v = new Person();
+    // alert(v.constructor);
+
+    // v = new Dog();
+    // alert(v.constructor);
+    // function Person (name) {
+    //   this.name = name;
+    //   this.sum = function () {
+    //     console.log(this.name)
+    //   }
+    // }
+
+    // Person.prototype.age = 10;
+    // function Per1() {
+      
+    // }
+
+    // Per1.prototype = new Person();
+    // Per1.prototype.age = 30;
+    // var per1 = new Per1()
+    // // alert(per1.age)
+
+    // function Person (name) {
+    //   this.name = name;
+    //   this.sum = function () {
+    //     console.log(this.name)
+    //   }
+    // }
+    // function Con () {
+    //   Person.call(this, 'jer') // 重点
+    //   this.age = 12;
+    // }
+    // var con1 = new  Con();
+    // alert(con1.name) // jer
+    // alert(con1.age)  // 12 
+    // alert(con1 instanceof Person) // false
+    
+  }
+</script>
+
+</html>
