@@ -3,3 +3,6 @@
 package-lock.json
 *dist
 *.DS_Store
+serve
+node-v12.13.1-x64.msi
+nvm-setup.exe
